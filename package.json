@@ -1,0 +1,69 @@
+{
+  "name": "black-hole-pet",
+  "version": "1.9.0",
+  "description": "独立实现的 WebGL2 黑洞与奶龙双方案 Windows 桌宠",
+  "main": "main.js",
+  "author": "凌晨曦",
+  "scripts": {
+    "start": "electron .",
+    "test": "node tests/config.test.js",
+    "check": "node --check main.js && node --check preload.js && node --check blackhole.js && node --check pet-renderer.js && node --check settings.js",
+    "build:native": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-native.ps1",
+    "build": "npm run build:native && electron-builder --win",
+    "build:dir": "npm run build:native && electron-builder --win dir"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.blackhole.gravity-pet",
+    "productName": "黑洞桌宠",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "app-config.js",
+      "preload.js",
+      "blackhole.js",
+      "blackhole.html",
+      "pet.html",
+      "pet-renderer.js",
+      "assets/**/*",
+      "settings.html",
+      "settings-preload.js",
+      "settings.js",
+      "README.md",
+      "LICENSE",
+      "ASSET-LICENSE.md",
+      "tray-icon.png",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "native/GravityHelper.exe",
+        "to": "GravityHelper.exe"
+      }
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "黑洞桌宠"
+    }
+  }
+}
