@@ -33,8 +33,5 @@
 - Windows 10 / 11 x64
 - 支持 WebGL2 的显卡与驱动
 
-## 说明
+## 赞赏<img width="1037" height="1037" alt="78e52f91ea67c2e2d437a8bf83911086" src="https://github.com/user-attachments/assets/5b451cea-894f-4cad-bab6-20e9d609ebab" />
 
-本仓库仅用于发布可执行版本，不公开项目源码。
-
-黑洞 GPU 渲染思路参考了 [Myantion/Cosmic](https://github.com/Myantion/Cosmic)。
