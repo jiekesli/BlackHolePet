@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>黑洞桌宠</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: transparent;
+      user-select: none;
+    }
+    #space, #pointer-layer {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    #pointer-layer { pointer-events: none; }
+    #space { cursor: default; }
+    #space.captured { cursor: none; }
+    #file-warp {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      width: 104px;
+      min-height: 76px;
+      padding: 10px 8px;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 10px;
+      background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(190,194,202,.72));
+      color: #16181e;
+      font: 12px/1.25 "Microsoft YaHei UI", sans-serif;
+      text-align: center;
+      box-shadow: 0 8px 26px rgba(0,0,0,.42);
+      opacity: 0;
+      pointer-events: none;
+      transform-origin: center;
+      will-change: transform, opacity, filter;
+    }
+    #file-warp .glyph {
+      display: block;
+      margin: 0 auto 5px;
+      width: 28px;
+      height: 34px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, #fff 0 72%, #c7cad1 73%);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.16);
+    }
+    #file-warp .name {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      word-break: break-all;
+    }
+    #status {
+      position: fixed;
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+      padding: 4px 9px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.75);
+      background: rgba(10,11,14,.38);
+      font: 11px "Microsoft YaHei UI", sans-serif;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .2s;
+      pointer-events: none;
+    }
+    #status.visible { opacity: 1; }
+  </style>
+</head>
+<body>
+  <canvas id="space"></canvas>
+  <canvas id="pointer-layer"></canvas>
+  <div id="file-warp">
+    <span class="glyph"></span>
+    <span class="name"></span>
+  </div>
+  <div id="status"></div>
+  <script src="blackhole.js"></script>
+</body>
+</html>
